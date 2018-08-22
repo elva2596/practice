@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>归并排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function mergSort(arr){
+			var len = arr.length;
+			if(len==1){
+				return arr
+			}
+
+			var mid = Math.floor(len/2),
+				left = arr.slice(0,mid),
+				right = arr.slice(mid,len);
+				return merg(mergSort(left),mergSort(right));
+
+		}
+
+		function merg(left,right){
+			var results = [],
+				il = 0,
+				rl = 0;
+			while(il<left.length&&rl<right.length){
+				if(left[il]<right[rl]){
+					results.push(left[il++])
+				}else{
+					results.push(right[rl++])
+				}
+			}
+
+			while(il<left.length){
+				results.push(left[il++])
+			}
+
+			while(rl<right.length){
+				results.push(right[rl++])
+			}
+
+			return results
+		}
+
+		console.log(mergSort([5,4,3,2,1]));
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		  var isClass = function (o){
+				return Object.prototype.toString.call(o).slice(8,-1)
+			}
+
+		var deepClone = (function deepClone(obj){
+			var result,
+				oClass = isClass(obj);
+			if(oClass==='Object'){
+				result = {}
+			}else if(oClass==='Array'){
+				result =  []
+			}else{
+				return obj
+			}
+
+			if(oClass==='Object'){
+				for(var key in obj){
+					result[key]  = deepClone(obj[key])	
+				}
+			}else if(oClass==="Array"){
+				for(var i=0;i<obj.length;i++){
+					result.push(deepClone(obj[i]))
+				}
+			}
+
+			return result
+		})
+
+		var orgin = {
+			name:{
+				firstName:"dai",
+				lastName:"lu"
+			},
+			firends:[{name:"A"},{name:"B"}],
+			age:26
+		}
+
+		var clone = deepClone(orgin);
+		console.log(clone);
+		clone.firends.push({name:"C"})
+		console.log(orgin.firends);
+	</script>
+</body>
+</html>

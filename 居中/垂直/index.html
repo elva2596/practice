@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>垂直居中</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			color: white;
+			font-weight: 700;
+			font-size: 20px;
+		}
+
+		.box1{
+			height: 200px;
+			background: orange;
+			line-height: 200px;
+		}
+		.box1 span{
+			background: blue;
+
+		}
+		.box2{
+			background:red;
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		.box2 span{
+			background:pink;
+		}
+
+		.box3{
+			background: blue;
+			height: 300px;
+			display: table;
+			width: 100%;
+		}
+		.box3 span{
+			background: orange;
+			display: table-cell;
+			vertical-align: middle;
+			/*display: inline-block;*/
+		}
+		.box4{
+			background: black;
+			height: 300px;
+			position: relative;
+		}
+		.box4 p{
+			background: red;
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			transform:translateY(-50%);
+
+		}
+		.box5{
+			background: blue;
+			height: 300px;
+		}
+		.box5 p{
+			/*position: absolute;*/
+			background: red;
+			height: 200px;
+
+			position: relative;
+			top: calc(50% - 100px);
+			display: flex;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<span>呵呵我是单行行内元素，并且我的父级元素有height,对我使用line-height:父级元素的高度</span>
+	</div>
+	<div class="box2">
+		<span>呵呵我是单行行内元素，并且我的父级么有height，对我的父级使用padding-top和padding-bottom相等的值</span>
+	</div>
+	<div class="box3">
+		<span>呵呵这次我是多行元素，<br>我的父元素有height,<br>对我的父元素使用<br>display:table-cell;<br>对我使用<br>vertical-align:middle;</span>
+	</div>
+	<div class="box4">
+		<p>这次我可是没有height父级有height的块级元素，对我的父元素使用:<br>position:relative;<br>对我使用:<br>position:absolute;<br>top:50%<br>transform:translateY(-50%)</p>
+	</div>
+	<div class="box5">
+		<p>这次我可是有height父级有height的块级元素，对我的父元素使用:<br>position:relative;<br>对我使用:<br>position:absolute;<br>top:50%<br>margin-top:-该元素高度</p>
+	</div>
+</body>
+</html>

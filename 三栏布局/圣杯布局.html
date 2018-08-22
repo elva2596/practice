@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局</title>
+	<style type="text/css">
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.container{
+			padding-left: 120px;
+			padding-right: 220px; 
+		}
+		.main{
+			float: left;
+			width: 100%;
+			background: green;
+			height: 200px;
+
+		}
+		.left{
+			float: left;
+			height: 200px;
+			width: 100px;
+			margin-left: -100%;
+			background: red;
+			position: relative;
+			left: -120px;
+		}
+		.right{
+			float: right;
+			width: 200px;
+			height: 200px;
+			margin-left: -200px;
+			background: blue;
+			position: relative;
+			right: -220px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container clearfix">
+		<div class="main"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

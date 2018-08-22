@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function swap(arr,index1,index2){
+			var temp = arr[index1];
+			arr[index1] = arr[index2];
+			arr[index2] = temp;
+		}
+
+		function portition(arr,left,right){
+			var pivot = arr[Math.floor(left+right)/2];
+			var i = left;
+			var j = right;
+
+			while(i<=j){
+				while(arr[i]<pivot){
+					i++
+				}
+				while(arr[j]>pivot){
+					j--;
+				}
+
+				if(i<j){
+					swap(arr,i,j);
+					i++;
+					j--;
+				}
+			}
+
+			return i;
+		}
+		function quickSort(arr,left,right){
+			var index;
+			if(arr.length>1){
+				index = portition(arr,left,right)
+
+				if(left<index-1){
+					quickSort(arr,left,index-1)
+				}
+				if(index<right){
+					quickSort(arr,index,right)
+				}
+			}
+			return arr
+		}
+
+		var arrs = [3,5,1,6,4,7,2]
+		// console.log(quickSort(arrs));
+		console.log(quickSort(arrs,0,arrs.length-1));
+	</script>
+</body>
+</html>

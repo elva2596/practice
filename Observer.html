@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let data = {
+		    user: {
+		        name: "hello world",
+		        age: "24"
+		    },
+		    address: {
+		        city: "beijing"
+		    }
+		};
+
+		function Observer(obj){
+			this.data = obj;
+			this.walk(obj)
+		}
+
+		// 遍历对象所有属性
+		Observer.prototype.walk = function (obj){
+			var that = this;
+			Object.keys(obj).forEach(function (key){
+				if(typeof obj[key] ==="object"){
+					new Observer(obj[key])
+				}
+				console.log(this);
+				that.convert(key,obj[key])
+			})
+		}
+
+		// 给每个属性绑定gertter 和setter
+		Observer.prototype.convert = function (key,val){
+			Object.defineProperty(this.data,key,{
+				configurable:true,
+				enumarable:true,
+				get:function (){
+					console.log("你访问了"+key);
+					return val
+				},
+				set:function (newVal){
+					if(typeof newVal==="object"){
+						new Observer(newVal)
+					}
+					val = newVal;
+					 console.log("你设置了"+key);
+		            console.log("新的"+key+"="+newVal);
+				}
+			})
+		}
+		var obj = new Observer(data)	
+		obj.data.user.name
+		obj.data.user.age = 30
+	</script>
+</body>
+</html>

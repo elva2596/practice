@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>水平居中</title>
+	<style type="text/css">
+		.box{
+			text-align: center;
+			height: 200px;
+			background: red;
+		}
+		body{
+			margin: 0;
+			color: white;
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.box span{
+			background: blue;
+			color: white;
+			font-size: 20px;
+			font-weight: 700;
+		}
+		.box1{
+			height: 200px;
+			background: green;
+		}
+		.box1 div{
+			background: orange;
+			width: 320px;
+			margin:0 auto;
+		}
+		.box2,
+		.box3{
+			position: relative;
+			background: orange;
+			height: 200px;
+
+		}
+		.box2 div{
+			width: 320px;
+			position: absolute;
+			background:black;
+			left: calc(50% - 160px);
+		}
+		.box3{
+			background: pink;
+		}
+		.box3 div{
+			/*width: 320px;*/
+			position: absolute;
+			left: 50%;
+			background: blue;
+			transform: translateX(-50%);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span>呵呵我是行内元素</span>
+	</div>
+	<div class="box1">
+		<div>呵呵我是有width的块级元素,对我使用<br>margin:0 auto;</div>
+	</div>
+	<div class="box2">
+		<div>呵呵我是有width的块级元素,对我使用<br>position:absolute;<br>left:calc(50% - 元素宽度)</div>
+	</div>
+	<div class="box3">
+		<div>呵呵我是没有width的块级元素,对我使用 <br>position:absolute;<br>left:50%<br>transform:translateX(-50%)</div>
+	</div>
+</body>
+</html>

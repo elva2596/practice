@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		/*
+		创建特权方法的方式之一就是在构造函数中创造特权方法
+		function Person(name){
+			this.getName = function(){
+				return name
+			}
+			this.setName = function (val){
+				name = val
+			}
+		}
+
+
+		var person1 = new Person("dailu1")
+		console.log(person1.getName());
+		var person2 = new Person("lulu")
+		console.log(person1.getName());
+		console.log(person2.getName());
+		 */
+		 (function (){
+		 	var name = "";
+		 	Person = function (val){
+		 		name = val
+		 	}
+
+		 	Person.prototype.getName = function (){
+		 		return name
+		 	}
+		 	Person.prototype.setName = function (val){
+		 		name = val
+		 	}
+		 })();
+
+		 // const element = ()
+	</script>
+</body>
+</html>

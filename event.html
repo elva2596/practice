@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" name="" value="default" onclick="showMsg(event)">
+	<input type="button" id="myBtn" name="" value="btn1">
+	<input type="button" id="btn" name="" value="btn2">
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<p>222</p>
+	<a href="http://www.baidu.com">百度</a>
+	<input type="text" name="" id='text'>
+	<script type="text/javascript">
+	var text = document.getElementById("text")
+	text.addEventListener("keypress",function (){
+		console.log("eee");
+	},false)
+		// 一，通过元素特性来添加事件
+		function showMsg(event){
+			console.log(this);
+			console.log(this.value);
+			console.log(event.type);
+		}
+
+		// 二，给事件处理属性赋值函数的方式
+		var btn = document.getElementById("myBtn");
+		btn.onclick = function (event){
+			console.log(this.value);
+		}
+		btn.onclick = null;
+
+		// 三，这种方式可以添加为同一个事件添加多个事件处理程序
+		var btn2 = document.getElementById("btn");
+		btn2.addEventListener("click",function (event){
+			console.log(this.value);
+			console.log(event);
+		},false)
+
+		btn2.addEventListener("click",function (){
+			console.log("message");
+		})
+
+		btn2.addEventListener("click",showMsg,false)
+		btn2.removeEventListener("click",showMsg,false)
+
+		var link = document.querySelector("a")
+		link.addEventListener('click',function (event){
+			// event.preventDefault();
+			// event.stopPropagation()
+			return false
+		},false)
+
+		document.body.addEventListener("click",function (){
+			console.log("message");
+		},false)
+
+		window.addEventListener("scroll",function (){
+			console.log("000");
+		},false)
+		window.addEventListener("resize",function (){
+			console.log("cccc");
+		})
+		document.addEventListener("contextmenu",function (event){
+			event.preventDefault()
+		},false)
+	</script>
+</body>
+</html>

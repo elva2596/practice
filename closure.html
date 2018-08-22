@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用命名函数表达式来完成递归</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var factorial = (function f(num){
+			if(num<=1){
+				return 1
+			}else{
+				return num*f(num-1)
+			}
+		})
+
+		var anof = factorial;
+		factorial = null;
+		console.log(anof(5));
+
+		function createFunction(){
+			var results = [];
+			/*
+			for(var i=0;i<10;i++){
+				results[i] = function (){
+					return i;
+				}
+			}
+			 */
+			for(var i=0;i<10;i++){
+				results[i] = (function(num){
+					return function (){
+						return num
+					}
+				})(i)
+			}
+			return results;
+		}
+		var re = createFunction()
+		console.log(re[2]());
+
+		var name = "the window";
+		var obj = {
+			name:"dailu",
+			getName:function (){
+				/*
+				return function (){
+					return this.name
+				}
+				 
+				return ()=>{
+					return this.name
+				}*/
+				var _this = this;
+				return function (){
+					return _this.name
+				}
+			}
+		}
+
+		console.log(obj.getName()());
+
+		// 访问私有变量方式一
+		function Person(name){
+			// 特权方法
+			this.getName = function (){
+				return name;
+			}
+			this.setName = function (val){
+				name = val;
+			}
+		}
+
+		var person = new Person("dailu")
+		console.log(person.getName());
+		person.setName("lulu")
+		console.log(person.getName());
+
+
+		// 访问私有变量方式二
+
+		(function (){
+			var name = "";
+
+			Person1 = function (val){
+				name = val
+			}
+
+			Person1.prototype.getName = function (){
+				return name;
+			}
+
+			Person1.prototype.setName = function (val){
+				name = val;
+			}	
+
+		})()
+
+		var person1 = new Person1("dailu")
+		console.log(person1.getName());
+		person1.setName("nima")
+		console.log(person1.getName());
+		var person2 = new Person1("hehe")
+		console.log(person2.getName());
+		person2.setName("liuliu")
+		console.log(person1.getName());
+		console.log(person2.getName());
+	</script>
+</body>
+</html>

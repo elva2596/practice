@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3伪类选择器</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.demo {
+				width: 300px;
+				border: 1px solid #ccc;
+				padding: 10px;			
+			}
+			.demo li {
+				border: 1px solid #ccc;
+				padding: 2px;
+				float: left;
+				margin-right:4px;
+				list-style: none;
+			}
+		 	.demo a {
+				float: left;
+				display: block;
+				height: 20px;
+				line-height: 20px;
+				width: 20px;
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				text-align: center;
+				background: #f36;
+				color: green;
+				text-decoration: none;
+			}
+			.clearfix:after{
+				content:"";
+				display: block;
+				clear: both;
+			}
+
+			.demo a:link {color:gray;}/*链接没有被访问时前景色为灰色*/
+			.demo a:visited{color:yellow;}/*链接被访问过后前景色为黄色*/
+			.demo a:hover{color:green;}/*鼠标悬浮在链接上时前景色为绿色*/
+			.demo a:active{color:pink;}/*鼠标点中激活链接那一下前景色为蓝色*/
+			input[type="text"]:disabled{
+				/*background: pink;*/
+			}
+			input[type="text"]:enabled{
+				/*background: blue;*/
+			}
+			input[type="checkbox"]:checked{
+				background: red;
+				background: red;
+				width: 30px;
+				display:block;
+				font-size: 20px;
+			}
+			.demo li:first-child{
+				/*background: green;*/
+				border: 1px dotted blue;
+			}
+			.demo li:last-child{
+				/*background: green;*/
+				border: 2px dotted blue;
+			}
+			/*.demo li:nth-child(3){
+				background: lime;
+			}*/
+			.demo li:nth-child(n){
+				/*background: lime;*/
+			}
+			.demo li:nth-child(2n){
+				/*background: lime;*/
+			}
+
+			.demo li:nth-child(even){
+				/*background: lime;*/
+			}
+
+			.demo li:nth-child(2n-1){
+				/*background: lime;*/
+			}
+			.demo li:nth-child(odd){
+				/*background: lime;*/
+			}
+			.demo li:nth-child(n+5){
+				/*background: lime;*/
+			}
+
+			.demo li:nth-child(-n+5){
+				/*background: lime;*/
+			}
+
+			.demo li:nth-child(4n+1){
+				background: lime;
+			}
+
+			.demo p:nth-child(2n){
+				background: lime;
+			}
+
+			.demo p:first-of-type{
+				/*background: lime;*/
+			}
+			.demo p:only-child{
+				/*background: red;*/
+			}
+			.demo p:only-of-type{
+				background: red;
+			}
+			.demo p:empty{
+				width: 30px;
+				height: 30px;
+				background:yellow;
+			}
+
+			input:not([type="button"]){
+				background: red;
+			}
+			p::first-line{
+				font-weight: 700;
+			}
+			p::first-letter{
+				font-size: 50px;
+				float: left;
+				margin-right: 4px;
+			}
+			p::selection{
+				background: blue;
+			}
+	</style>
+</head>
+<body>
+	<div class="demo clearfix">
+	  <ul class="clearfix">
+		<li class="first links odd" id="first"><a href="">1</a></li>
+		<li class="links even"><a href="">2</a></li>
+		<li class="links odd"><a href="">3</a></li>
+		<li class="links even"><a href="">4</a></li>
+		<li class="links odd"><a href="">5</a></li>
+		<li class="links even"><a href="">6</a></li>
+		<li class="links odd"><a href="">7</a></li>
+		<li class="links even"><a href="">8</a></li>
+		<li class="links odd"><a href="">9</a></li>
+		<li class="links even last" id="last"><a href="">10</a></li>
+		</ul>
+		<input type="text" name="" >
+		<input type="radio" name="">
+		<input type="checkbox" name="">
+		<p>test1</p>
+		<p>test2</p>
+		<p>test3</p>
+		<div>t1</div>
+		<div>t2</div>
+		<div>t3</div>
+
+		<div class="post">
+			<p>haha1</p>
+			<p>haha2</p>
+		</div>
+		<div class="post">
+			<p>hahaaaa</p>
+		</div>
+
+		<div class="post">
+			<div>ooo</div>
+			<p>哈哈啊哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈啊哈哈</p>
+			<div>222222 uuuuu  yyyyy uuuuuuuuu  iii 哈哈哈</div>
+		</div>
+
+		<p>444</p>
+		<p></p>
+		<p>999</p>
+		<input type="button" name="" value="提交">
+	</div>
+
+</body>
+</html>

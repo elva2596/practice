@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2构造函数创建对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(name,age,job){
+			this.name = name;
+			this.age = age;
+			this.job = job;
+			this.sayName = function(){
+				console.log(this.name);
+			}
+		}
+
+		var person1 = new Person("dailu",21,"stu")
+		var person2 = new Person("lulu",23,"stu2")
+		person1.sayName()
+		person2.sayName()
+		/*
+			使用New操作符调用构造函数经历四个阶段：
+				1.创建一个新对象
+				2.让this指向这个新对象
+				3.给新对象添加属性和方法
+				4.返回新对象
+
+			缺点:方法无法被实例对象共享
+		 */
+		var person3 = Person("lululu",555,"doc")
+		window.sayName()
+
+	</script>
+</body>
+</html>
