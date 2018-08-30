@@ -42,7 +42,6 @@
                 	这里可以让resolve之后才注册进来的回调立即执行
                  */
                 var ret = handler.onFulfilled(value);
-                console.log(ret);
                 handler.resolve(ret);
             }
 

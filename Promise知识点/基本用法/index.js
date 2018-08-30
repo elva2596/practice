@@ -57,7 +57,7 @@ console.log('hi');
   })
 
   /**
-   * Promise封装AJAX,支持GET/POST,异步
+   * Promise封装AJAX,支持GET/POST,异步，请求超时处理
    */
 
    function request(params={}) {
@@ -160,5 +160,22 @@ console.log('hi');
   setTimeout(()=>{
     console.log('hhhh')
   },2000)
+
+
+  // Promis.all中如果有一个promise实例有catch方法，则不会调用Promise.all的catch方法
+  const pp1 = new Promise((resolve,reject) => {
+    resolve('hello')
+  }).then(result => result)
+  .catch(e => e)
+
+  const pp2 = new Promise((resolve,reject) => {
+    throw new Error('报错了');
+  })
+  .then(result => result)
+  .catch(e => e)
+
+  Promise.all([pp1,pp2])
+  .then(result => console.log(result))
+  .catch(e => console.log(e))
 
   
