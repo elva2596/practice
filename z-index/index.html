@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>z-index</title>
+    <style>
+      div{
+        position: relative;
+        width:100px;
+        height: 100px;
+        /* 没有产生层叠上下文，因此 a b c 处于同一个层叠上下文中(由根元素html产生) */
+
+      }
+
+      .box1{
+        z-index:2;
+      }
+      .box2{
+        z-index: 1;
+      }
+      p{
+        position:absolute;
+        font-size: 20px;
+        width: 100px;
+        height: 100px;
+      }
+      .a{
+        background-color: blue;
+        z-index:1;
+      }
+
+      .b{
+        background-color: green;
+        z-index: 2;
+        top:20px;
+        left:20px;
+      }
+      .c{
+        /* 父元素产生了层叠上下文(通过设置z-index属性，但是值小于.box1),
+            因此该元素的z-index无论设置多大值，总是会处于最底层
+         */
+        background-color: red;
+        z-index:99999;
+        top:-20px;
+        left:40px;
+      }
+    </style>
+</head>
+<body>
+  <!-- 
+    如何产生层叠上下文
+     1.根元素html本身就具有层叠上下文
+     2.普通元素设置position属性为非static值并设置z-index属性为具体数值
+     3.CSS3中的新属性也可以产生层叠上下文(opacity不是1，transform,
+        父元素display:flex 子元素设置z-index
+     )
+
+    层叠上下文和层叠等级是一种概念，
+    层叠顺序是一种规则 :
+        从下到上的层叠顺序:
+            backfround/border(层叠元素的背景图和边框)  -> z-index<0  -> block元素 -> float浮动元素 -> inlinr/inline-block元素  -> 
+              z-index:auto(默认值); /z-index:0   => z-index>0
+   -->
+
+   <div class="box1">
+     <p class="a">a</p>
+     <p class="b">b</p>
+   </div>
+   <div class="box2">
+     <p class="c">c</p>
+   </div>
+</body>
+</html>
